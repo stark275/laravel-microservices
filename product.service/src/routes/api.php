@@ -16,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/products', [ProductController::class, 'index']); // ok
-Route::post('/products', [ProductController::class, 'store']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::post('/products', [ProductController::class, 'store']); // ok
+Route::get('/products/{id}', [ProductController::class, 'show']); // ok
+Route::put('/products/{id}', [ProductController::class, 'update']); // ok
 
 Route::get('/products/{product}/prices', [PriceController::class, 'index']); // ok
 Route::post('/products/{product}/prices', [PriceController::class, 'store']); // ok
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
