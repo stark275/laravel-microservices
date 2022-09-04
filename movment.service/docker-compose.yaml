@@ -1,0 +1,97 @@
+version: '3'
+
+networks:
+  movment_service:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "12081:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - movment_service
+
+  mysql:
+    image: mysql:5.7.22
+    container_name: mysql_movment_service
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "12307:3306"
+    environment:
+      MYSQL_DATABASE: movment_service
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - movment_service
+
+  pma2:
+      depends_on:
+       - mysql
+      image: phpmyadmin/phpmyadmin
+      container_name: pma2_movment_service
+      restart: always
+      ports:
+       - '12091:80'
+      environment:
+        PMA_HOST: mysql
+      networks:
+      - movment_service
+  
+  # usage docker-compose run --rm php --version
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_movment_service
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "12002:9000"
+    networks:
+      - movment_service
+
+  # usage docker-compose run --rm composer dump-autoload -o
+  composer:
+    image: composer:latest
+    container_name: composer_movment_service
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    networks:
+      - movment_service
+    
+  # usage docker-compose run --rm artisan make:controller TestController
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: artisan_movment_service
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - mysql
+    working_dir: /var/www/html
+    entrypoint: ['/var/www/html/artisan']
+    networks:
+      - movment_service
+
+  ###############################################################
+  ################# Media Server Configuration ##################
+
+  ## docker ps -aq | xargs docker stop | xargs docker rm
+
