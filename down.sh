@@ -1,6 +1,5 @@
 #! /usr/bin/bash
 
-
 ROOT=$(pwd)
 echo $ROOT
 

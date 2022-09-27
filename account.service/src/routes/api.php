@@ -20,8 +20,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
-
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

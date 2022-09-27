@@ -94,4 +94,5 @@ services:
   ################# Account service ##################
 
   ## docker ps -aq | xargs docker stop | xargs docker rm
+## ~/.config/composer/vendor/bin
 

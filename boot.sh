@@ -6,7 +6,7 @@ function firstBoot() {
     chmod -R 777 bootstrap/
     chmod -R 777 storage/
 
-    echo "lol"
+    echo "Folder config done!"
 }
 
 
@@ -18,13 +18,12 @@ SRC="/src"
 
 for SERVICE in $SERVICES 
   do
-
     cd "$SERVICE$SRC"
     # -------- First boot ----------
     # firstBoot
     
     cd "$ROOT/$SERVICE"
-    # docker-compose up -d --build
+    docker-compose up -d --build
 
     break
 done
