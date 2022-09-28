@@ -9,6 +9,29 @@
                         <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                     </li>
 
+
+
+
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{routeActive('admin.dashboard')}}" href="{{route('admin.dashboard')}}"><i data-feather="pie-chart"></i><span>Tableau de bord</span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link menu-title {{routeActive('admin.shops.index')}}" href="{{route('admin.shops.index')}}"><i data-feather="shopping-cart"></i><span>Boutiques</span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link menu-title " href="#"><i data-feather="users"></i><span>Agents</span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link menu-title " href="#"><i data-feather="database"></i><span>Produits</span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link menu-title " href="#"><i data-feather="dollar-sign"></i><span>Taux de change</span></a>
+                    </li>
+
                     @auth
 
                     <li class="sidebar-main-title">
