@@ -76,6 +76,39 @@
                     </div>
                 </div>
 
+                <div class="col-xl-12 box-col-12 des-xl-100 dashboard-sec">
+                    <div class="card income-card">
+                      <div class="card-header">
+                        <div class="header-top d-sm-flex align-items-center">
+                          <h5>Vue globale des recettes</h5>
+                          <div class="center-content">
+                            <p class="d-sm-flex align-items-center"><span class="font-primary m-r-10 f-w-700">+ 49.000 Fc</span><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i> + 15% </p>
+                          </div>
+                          <div class="setting-list">
+                            <ul class="list-unstyled setting-option">
+                              <li>
+                                <div class="setting-primary"><i class="icon-settings"></i></div>
+                              </li>
+                              <li><i class="view-html fa fa-code font-primary"></i></li>
+                              <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
+                              <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
+                              <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
+                              <li><i class="icofont icofont-error close-card font-primary"></i></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0">
+                        <div id="chart-timeline-dashbord"></div>
+                        <div class="code-box-copy">
+                          <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#yearly-overview" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 <div class="col-xl-12 xl-100 box-col-12">
                     <div class="card o-hidden">
                       <div class="card-header pb-0">
@@ -199,6 +232,8 @@
         <script src="{{asset('assets/js/chart/apex-chart/moment.min.js')}}"></script>
         <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
         <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
+        <script src="{{asset('assets/js/dashboard/default.js')}}"></script>
+
 
         <script src="{{asset('assets/js/chart-widget.js')}}"></script>
 

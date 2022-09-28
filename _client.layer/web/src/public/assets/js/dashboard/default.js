@@ -194,7 +194,7 @@ var options = {
           [1353366000000, 48.64],
           [1353452400000, 48.84],
           [1353625200000, 48.40],
-          [1353884400000, 48.30],         
+          [1353884400000, 48.30],
           [1355353200000, 55.53],
           [1355439600000, 55.56],
           [1355698800000, 55.42],
@@ -251,7 +251,7 @@ var options = {
   chart: {
       id: 'area-datetime',
       type: 'area',
-      height: 425,
+      height: 400,
       zoom: {
           autoScaleYaxis: true
       },
@@ -275,10 +275,10 @@ var options = {
       xaxis: [{
           x: new Date('15 Nov 2012').getTime(),
           borderColor: vihoAdminConfig.primary,
-          yAxisIndex: 50,          
+          yAxisIndex: 50,
           label: {
               show: false,
-              text: '$859,432',
+              text: '54 000 Fc',
               style: {
                   color: "#fff",
                   background: vihoAdminConfig.primary
@@ -330,12 +330,12 @@ var options = {
       breakpoint: 1238,
       options: {
           chart: {
-              height:300              
+              height:300
           },
           grid: {
-            padding: {              
-              bottom: 5,              
-           },  
+            padding: {
+              bottom: 5,
+           },
           }
       }
   },
@@ -343,17 +343,17 @@ var options = {
     breakpoint: 992,
     options: {
         chart: {
-            height: 300              
+            height: 300
         }
     }
 },
 {
       breakpoint: 551,
-      options: {          
+      options: {
           grid: {
-            padding: {              
-              bottom:10,              
-           },  
+            padding: {
+              bottom:10,
+           },
           }
       }
   },
@@ -366,9 +366,10 @@ var options = {
 
     }
 }],
-  
+
   colors: [vihoAdminConfig.primary],
 };
+
 var charttimeline = new ApexCharts(document.querySelector("#chart-timeline-dashbord"), options);
 charttimeline.render();
 // second chart dashbord dafault

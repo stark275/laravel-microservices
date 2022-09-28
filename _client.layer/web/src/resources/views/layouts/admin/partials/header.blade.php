@@ -21,34 +21,6 @@
       <ul class="nav-menus">
         <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
 
-        <li class="onhover-dropdown">
-          <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
-          <ul class="notification-dropdown onhover-show-div">
-            <li>
-              <p class="f-w-700 mb-0">Vous avez 2 Notifications<span class="pull-right badge badge-primary badge-pill">4</span></p>
-            </li>
-
-            <li class="noti-secondary">
-              <div class="media">
-                <span class="notification-bg bg-light-secondary"><i data-feather="check-circle"> </i></span>
-                <div class="media-body">
-                  <p>6 Cours terminés</p>
-                  <span>Il y a 2 min</span>
-                </div>
-              </div>
-            </li>
-            <li class="noti-success">
-              <div class="media">
-                <span class="notification-bg bg-light-success"><i data-feather="file-text"> </i></span>
-                <div class="media-body">
-                  <p>Rapport mensuel</p>
-                  <span>Il y a 2 min</span>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-        </li>
         <li>
             <div class="mode"><i class="fa fa-moon-o"></i></div>
         </li>

@@ -11,8 +11,7 @@
     <section>
 	    <div class="container-fluid">
 	        <div class="row">
-	            <div class="col-xl-5"><img class="bg-img-cover bg-center" src="{{ asset('assets/images/aaa.jpeg') }}" alt="looginpage" /></div>
-	            <div class="col-xl-7 p-0">
+	            <div class="col-xl-12 p-0">
 	                <div class="login-card">
 	                    <form class="theme-form login-form" method="POST" action="{{route('authenticate')}}">
                             @csrf
