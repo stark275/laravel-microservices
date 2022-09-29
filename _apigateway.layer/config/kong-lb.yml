@@ -14,9 +14,9 @@ services:
 upstreams:
 - name: example_upstream
   targets:
-    - target: 127.0.0.1:12080
+    - target: 172.31.0.5:80
       weight: 100
-    - target: 127.0.0.1:12081
+    - target: 172.31.0.5:80
       weight: 100
 
 plugins:

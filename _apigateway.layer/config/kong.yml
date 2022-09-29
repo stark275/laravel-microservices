@@ -3,7 +3,7 @@ _format_version: "2.1"
 services:
 
 - name: echo-server
-  url: http://localhost:12080
+  url: http://172.31.0.5:80
   routes:
   - name: echo
     paths:
