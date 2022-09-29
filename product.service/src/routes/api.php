@@ -24,3 +24,8 @@ Route::get('/products/{product}/prices', [PriceController::class, 'index']); // 
 Route::post('/products/{product}/prices', [PriceController::class, 'store']); // ok
 
 
+Route::get('/test', function (Request $request) {
+    return collect([
+        'the-true' => 'i have $500,000'
+    ]);
+});
