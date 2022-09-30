@@ -2,6 +2,7 @@
 ROOT=$(pwd)
 
 SERVICES=$(ls | grep ".service")
+
 SRC="/src"
 
 
