@@ -9,6 +9,20 @@ services:
     paths:
     - /
 
+- name: account-service
+  url: http://localhost:12080/api/
+  routes:
+  - name: account
+    paths:
+    - /account
+
+- name: product-service
+  url: http://localhost:12082/api/
+  routes:
+  - name: products
+    paths:
+    - /products
+
 # consumers:
 # - username: user
 
