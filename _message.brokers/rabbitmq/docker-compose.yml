@@ -1,13 +1,14 @@
 version: "3.3"
 services:
   rabbitmq3:
+    network_mode: host
     image: rabbitmq:3.8-management-alpine
     container_name: "rabbitmq"
     environment:
       - RABBITMQ_DEFAULT_USER=root
       - RABBITMQ_DEFAULT_PASS=root
-    ports:
-      # AMQP protocol port
-      - '5672:5672'
-      # HTTP management UI
-      - '15672:15672'
+    # ports:
+    #   # AMQP protocol port
+    #   - '5672:5672'
+    #   # HTTP management UI
+    #   - '15672:15672'
