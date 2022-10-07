@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('rabbitmq', 'rabbitmq'),
+    'default' => env('QUEUE_CONNECTION', 'sync'),
 
     /*
     |--------------------------------------------------------------------------

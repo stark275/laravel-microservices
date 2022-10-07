@@ -23,16 +23,19 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        $response = Http::post('http://127.0.0.1:8001/api/login',[
+        $response = Http::post('http://127.0.0.1:8000/account/login',[
             'email' => $credentials['email'],
             'password' => $credentials['password']
         ]);
+         session(['apiUser', $response->json()]);
+        dd($response->json());
 
-        if (true) {
-            session(['apiUser', $response->body()]);
-            dump(session('apiUser'));
-            dd($response->collect());
-        }
+
+        // if (true) {
+        //     session(['apiUser', $response->body()]);
+        //     dump(session('apiUser'));
+        //     dd($response->collect());
+        // }
 
 
 
