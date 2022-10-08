@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -27,8 +28,12 @@ class AuthController extends Controller
             'email' => $credentials['email'],
             'password' => $credentials['password']
         ]);
-         session(['apiUser', $response->json()]);
-        dd($response->json());
+
+        Session::put('apiUser', $response->json());
+        //  session(['apiUser', ]);
+        // dd(Session::get('apiUser'));
+
+        return redirect()->route('admin.dashboard');
 
 
         // if (true) {

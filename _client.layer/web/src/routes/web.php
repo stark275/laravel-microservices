@@ -8,6 +8,7 @@ use App\Http\Controllers\User\AuthController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,15 +34,13 @@ Route::get('/admin/shops/{id}/operations', [OperationController::class, 'index']
 Route::get('/admin/shops/{id}/operations/sells', [SellController::class, 'index'])->name('operations.sells.index');
 
 
-
 Route::get('/test', function (Request $request) {
 
     // $res = Http::accept('application/json')
     //             ->withToken('7|EoJu83V2RripUsbE9RerTcYQn13Q9swg1GHPrTHn')
-                // ->post('http://127.0.0.1:8001/api/logout');
-
+                 // ->post('http://127.0.0.1:8001/api/logout');
     // $res = Http::accept('application/json')
     //             ->get('http://127.0.0.1:8001/api/get');
 
-    dd(session('apiUser'));
+    dd(Session::get('apiUser'));
 });
