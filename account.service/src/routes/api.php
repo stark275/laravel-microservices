@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
@@ -19,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
-
 Route::get('/auth', [AuthController::class, 'auth']);
 
 Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
@@ -27,6 +27,9 @@ Route::post('/shops', [ShopController::class, 'store'])->name('shops.store');
 Route::put('/shops/{shop}', [ShopController::class, 'update'])->name('shops.update');
 Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
 
+Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
+Route::get('/agents/{agent}', [AgentController::class, 'show'])->name('agents.show');
+Route::post('/agents', [AgentController::class, 'store'])->name('agents.store');
 
 
 

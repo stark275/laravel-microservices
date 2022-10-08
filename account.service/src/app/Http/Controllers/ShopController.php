@@ -19,7 +19,7 @@ class ShopController extends Controller
             'type' => 'string'
         ]);
 
-        return shop::create($request->all());
+        return Shop::create($request->all());
     }
 
     public function update(Request $request, Shop $shop)
