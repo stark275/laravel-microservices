@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Shop;
+use App\Models\Agent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ShopCreated implements ShouldQueue
+class AgentCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -28,13 +28,13 @@ class ShopCreated implements ShouldQueue
      */
     public function handle()
     {
-        $shop = Shop::create([
+        $agent = Agent::create([
             'id' => $this->data['id'],
             'name' => $this->data['name'],
-            'type' => $this->data['type'],
-            'account_id' => 1,
+            'firstname' => $this->data['firstname'],
+            'role' => $this->data['role'],
         ]);
 
-        dump($shop);
+        dump($agent);
     }
 }

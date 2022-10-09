@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ShopCreated;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShopController extends Controller
 {
@@ -19,7 +21,10 @@ class ShopController extends Controller
             'type' => 'string'
         ]);
 
-        return Shop::create($request->all());
+        $shop =  Shop::create($request->all());
+        ShopCreated::dispatch($shop->toArray());
+
+        return $shop;
     }
 
     public function update(Request $request, Shop $shop)

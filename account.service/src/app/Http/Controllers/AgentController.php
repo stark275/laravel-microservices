@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\AgentCreated;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class AgentController extends Controller
             'phone' => 'required|string|unique:users,phone',
         ]);
 
-        return User::create([
+        $user =  User::create([
             'name' => $fields['name'],
             'firstname' => $fields['firstname'],
             'role' => $fields['role'],
@@ -30,6 +31,10 @@ class AgentController extends Controller
             'phone' => $fields['phone'],
             'password' => bcrypt('00000000')
         ]);
+
+        AgentCreated::dispatch($user->toArray());
+
+        return $user;
     }
 
     public function update(Request $request, User $user)
