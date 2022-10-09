@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\PriceCreated;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,15 @@ class PriceController extends Controller
         ]);
 
         if ($this->unsetCurrentPrice($product)) {
-            return $product->prices()->create([
+
+
+            $price =  $product->prices()->create([
                 'amount' => $data['amount']
             ]);
+
+            //PriceCreated::dispatch($price->refresh()->toArray());
+
+            return $price->refresh();
         }
 
         $response = [
@@ -37,10 +44,13 @@ class PriceController extends Controller
 
     private function unsetCurrentPrice(Product $product)
     {
-        return $product->prices()->where('current', true)->update([
-            'current' => false
-        ]);
-    }
+        if ($product->getPrices()->count() > 0) {
+            return $product->prices()->where('current', true)->update([
+                'current' => false
+            ]);
+        }
 
+        return true;
+    }
 
 }

@@ -23,6 +23,13 @@ services:
     paths:
     - /products
 
+- name: operation-service
+  url: http://localhost:12081/api/
+  routes:
+  - name: operations
+    paths:
+    - /op
+
 # consumers:
 # - username: user
 

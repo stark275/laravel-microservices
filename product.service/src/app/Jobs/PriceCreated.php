@@ -13,14 +13,11 @@ class PriceCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**

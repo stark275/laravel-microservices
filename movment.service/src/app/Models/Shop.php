@@ -15,4 +15,14 @@ class Shop extends Model
         'type',
         'account_id'
     ];
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
+
+    public function getSessions()
+    {
+        return $this->sessions;
+    }
 }

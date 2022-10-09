@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->foreignId('price_id');
             $table->double('other_price')->nullable();
+            $table->foreignId('session_id');
             $table->timestamps();
         });
     }

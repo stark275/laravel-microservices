@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Price;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,14 +14,11 @@ class PriceCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -30,6 +28,15 @@ class PriceCreated implements ShouldQueue
      */
     public function handle()
     {
-        //
+        dd($this->data['id']);
+
+        $price = Price::create([
+            'id' => $this->data['id'],
+            'amount' => $this->data['amount'],
+            'product_id' => $this->data['product_id'],
+            'currency' => $this->data['currency']
+        ]);
+
+
     }
 }

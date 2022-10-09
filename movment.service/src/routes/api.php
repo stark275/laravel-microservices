@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OperationController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/products', [ProductController::class, 'index']); // ok
+// Route::post('/products', [ProductController::class, 'store']); // ok
+// Route::get('/products/{id}', [ProductController::class, 'show']); // ok
+// Route::put('/products/{id}', [ProductController::class, 'update']); // ok
+
+Route::get('/shops/{shop}/sessions', [SessionController::class, 'index'])->name('sessions.index'); // ok
+Route::post('/shops/{shop}/sessions', [SessionController::class, 'store'])->name('sessions.store'); // ok
+Route::post('/shops/{shop}/sessions/{session}/close', [SessionController::class, 'close'])->name('sessions.close'); // ok
+
+
+Route::get('/sessions/{session}/operations',[OperationController::class, 'index'])->name('operations.index');
+
+
+
+
 Route::get('/test', function (Request $request) {
     return collect([
         'the-true' => 'i have $500,000'
     ]);
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
