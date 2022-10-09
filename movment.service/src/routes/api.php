@@ -27,6 +27,8 @@ Route::post('/shops/{shop}/sessions/{session}/close', [SessionController::class,
 
 
 Route::get('/sessions/{session}/operations',[OperationController::class, 'index'])->name('operations.index');
+Route::post('/sessions/{session}/operations',[OperationController::class, 'store'])->name('operations.store');
+
 
 
 
