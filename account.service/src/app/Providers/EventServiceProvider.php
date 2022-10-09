@@ -31,7 +31,6 @@ class EventServiceProvider extends ServiceProvider
     {
         App::bindmethod(TestJob::class. '@handle', function ($job)
         {
-            dump('llllllllllll');
             return $job->handle();
         });
     }

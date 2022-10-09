@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('id')->primary();
             $table->string('name');
             $table->string('firstname');
             $table->string('role');

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProductCreated;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -33,7 +35,11 @@ class ProductController extends Controller
             "other_description" => "string",
         ]);
 
-        return Product::create($request->all());
+        $product = Product::create($request->all());
+
+        ProductCreated::dispatch($product->toArray());
+
+        return response($product, Response::HTTP_CREATED);
     }
     /**
      * Display the specified resource.
