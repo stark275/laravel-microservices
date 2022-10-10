@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -14,5 +15,13 @@ class Shop extends Model
         'account_id'
     ];
 
-    use HasFactory;
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class);
     }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
+
+    public function getShop()
+    {
+        return $this->shop;
+    }
 }

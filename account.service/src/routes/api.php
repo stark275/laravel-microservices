@@ -26,6 +26,8 @@ Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
 Route::post('/shops', [ShopController::class, 'store'])->name('shops.store');
 Route::put('/shops/{shop}', [ShopController::class, 'update'])->name('shops.update');
 Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
+Route::post('/shops/{shop}/agent', [ShopController::class, 'attach'])->name('shops.agent.attach');
+
 
 Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
 Route::get('/agents/{agent}', [AgentController::class, 'show'])->name('agents.show');

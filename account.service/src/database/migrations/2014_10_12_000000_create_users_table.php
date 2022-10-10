@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('active')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('shop_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

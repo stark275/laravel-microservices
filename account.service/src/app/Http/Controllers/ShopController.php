@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ShopCreated;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -40,5 +41,18 @@ class ShopController extends Controller
     public function show(Shop $shop)
     {
         return $shop;
+    }
+
+    public function attach(Request $request,Shop $shop)
+    {
+        $data = $request->validate([
+            'user_id' => 'nullable|numeric'
+        ]);
+
+        $user = User::where('id', $data['user_id'])->update([
+            'shop_id' => $shop->id
+        ]);
+
+        return $user;
     }
 }
