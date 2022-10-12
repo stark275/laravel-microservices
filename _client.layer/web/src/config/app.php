@@ -212,4 +212,10 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'services' => [
+        'account' => 'http://127.0.0.1:8000/account',
+        'operation' => 'http://127.0.0.1:8000/operations',
+        'product' => 'http://127.0.0.1:8000/products',
+    ]
+
 ];

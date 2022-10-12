@@ -29,6 +29,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/shops', [ShopController::class, 'index'])->name('admin.shops.index');
+Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admin.shops.create');
+Route::post('/admin/shops', [ShopController::class, 'store'])->name('admin.shops.store');
+
 
 Route::get('/admin/shops/{id}/operations', [OperationController::class, 'index'])->name('operations.index');
 Route::get('/admin/shops/{id}/operations/sells', [SellController::class, 'index'])->name('operations.sells.index');

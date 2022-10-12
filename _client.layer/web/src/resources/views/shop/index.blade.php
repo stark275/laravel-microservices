@@ -34,7 +34,7 @@
 	                <div class="card-body">
 
 	                    <div class="table-responsive">
-                            <a  href="#" class="btn btn-success mb-2 float-end">
+                            <a  href="{{route('admin.shops.create')}}" class="btn btn-success mb-2 float-end">
                                 <i class="size-15" data-feather="plus-circle"></i>
                                 Nouvelle boutique
                               </a>
@@ -53,14 +53,14 @@
 	                             @forelse ($shops as $shop)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>Ets. Eternel {{ $loop->index + 1 }}</td>
-                                        <td>Motos & Divers</td>
+                                        <td>{{$shop['name']}}</td>
+                                        <td>{{$shop['type']}}</td>
                                         <td style="text-align: center">
                                             <a href="#" class="btn btn-primary">
                                                 <i class="size-15" data-feather="info"></i>
                                                 Détails
                                             </a>
-                                            <a href="{{route('operations.index',[($loop->index + 1)])}}" class="btn btn-primary">
+                                            <a href="{{route('operations.index',[($shop['id'])])}}" class="btn btn-primary">
                                                 <i class="size-15" data-feather="layers"></i>
                                                 Opérations
                                             </a>

@@ -24,7 +24,8 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        $response = Http::post('http://127.0.0.1:8000/account/login',[
+
+        $response = Http::post(config('app.services.account').'/login',[
             'email' => $credentials['email'],
             'password' => $credentials['password']
         ]);
@@ -35,15 +36,11 @@ class AuthController extends Controller
 
         return redirect()->route('admin.dashboard');
 
-
         // if (true) {
         //     session(['apiUser', $response->body()]);
         //     dump(session('apiUser'));
         //     dd($response->collect());
         // }
-
-
-
     }
 
     public function logout(Request $request)

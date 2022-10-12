@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Operation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class OperationController extends Controller
 {
-    public function index()
+    public function index($shop)
     {
-        $sell = collect([1,2,3,1,1,1,1,1,1,1,]);
+        $sell = [];
 
         return view('operation.index',[
             'sells' => $sell
