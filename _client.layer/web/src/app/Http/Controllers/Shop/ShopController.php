@@ -27,6 +27,19 @@ class ShopController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'type' => ['required', 'string'],
+        ]);
 
+        $shop = Http::post(config('app.services.account').'/shops',[
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'account_id' => 1
+        ]);
+
+        // dd($shop->json());
+
+        return redirect()->route('admin.shops.index');
     }
 }

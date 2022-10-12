@@ -23,6 +23,7 @@ class ShopController extends Controller
         ]);
 
         $shop =  Shop::create($request->all());
+
         ShopCreated::dispatch($shop->toArray());
 
         return $shop;

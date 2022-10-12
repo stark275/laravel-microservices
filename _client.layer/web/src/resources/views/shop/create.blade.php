@@ -26,27 +26,16 @@
                         <form class="theme-form" method="POST" action="{{route('admin.shops.store')}}">
                             @csrf
                             <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="inputPassword3">Noms</label>
+                                <label class="col-sm-3 col-form-label" for="inputPassword3">Nom de la boutique</label>
                                 <div class="col-sm-9">
                                     <input class="form-control" name="name" id="url" type="text" placeholder="" />
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="inputEmail3">Email</label>
+                                <label class="col-sm-3 col-form-label" for="inputEmail3">Domaine</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="email" id="inputEmail3" type="email" placeholder="" />
+                                    <input class="form-control" name="type" id="inputEmail3" type="text" placeholder="" />
                                 </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="inputPassword3">Téléphone</label>
-
-                                <div class="col-sm-9">
-                                    <div class="input-group"><span class="input-group-text">+243</span>
-                                        <input class="form-control" name="phone" id="inputPassword3" type="text" aria-label="Téléphone">
-                                    </div>
-                                </div>
-
                             </div>
 
                             <div class="card-footer">
