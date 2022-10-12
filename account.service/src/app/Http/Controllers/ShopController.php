@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\ShopCreated;
+use App\Jobs\ShopUpdated;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ class ShopController extends Controller
             'name' => 'required|string',
             'type' => 'string'
         ]);
+
+        ShopUpdated::dispatch($shop->refresh()->toArray());
 
         return $shop->update($request->all());
     }

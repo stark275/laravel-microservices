@@ -20,6 +20,15 @@ class ShopController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $shop = Http::get(config('app.services.account')."/shops/$id");
+
+        return view('shop.show',[
+            'shop' => $shop->json()
+        ]);
+    }
+
     public function create()
     {
         return view('shop.create');
@@ -39,6 +48,24 @@ class ShopController extends Controller
         ]);
 
         // dd($shop->json());
+
+        return redirect()->route('admin.shops.index');
+    }
+
+    public function update(Request $request, $shop)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'type' => ['required', 'string'],
+        ]);
+
+        $shop = Http::put(config('app.services.account')."/shops/{$shop}",[
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'account_id' => 1
+        ]);
+
+        dd($shop->json());
 
         return redirect()->route('admin.shops.index');
     }

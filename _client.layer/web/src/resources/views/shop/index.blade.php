@@ -56,7 +56,7 @@
                                         <td>{{$shop['name']}}</td>
                                         <td>{{$shop['type']}}</td>
                                         <td style="text-align: center">
-                                            <a href="#" class="btn btn-primary">
+                                            <a href="{{route('admin.shops.show',[($shop['id'])])}}" class="btn btn-primary">
                                                 <i class="size-15" data-feather="info"></i>
                                                 Détails
                                             </a>

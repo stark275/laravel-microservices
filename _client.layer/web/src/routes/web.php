@@ -30,6 +30,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/shops', [ShopController::class, 'index'])->name('admin.shops.index');
 Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admin.shops.create');
+Route::get('/admin/shops/show/{id}', [ShopController::class, 'show'])->name('admin.shops.show');
+Route::post('/admin/shops/show/{id}', [ShopController::class, 'update'])->name('admin.shops.update');
+
+
 Route::post('/admin/shops', [ShopController::class, 'store'])->name('admin.shops.store');
 
 
