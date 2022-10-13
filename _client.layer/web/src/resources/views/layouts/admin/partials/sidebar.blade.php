@@ -10,7 +10,7 @@
                     </li>
 
 
-
+                    @if (isset(session('apiUser')['user']))
 
                     <li class="dropdown">
                         <a class="nav-link menu-title {{routeActive('admin.dashboard')}}" href="{{route('admin.dashboard')}}"><i data-feather="pie-chart"></i><span>Tableau de bord</span></a>
@@ -25,62 +25,25 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="nav-link menu-title " href="#"><i data-feather="database"></i><span>Produits</span></a>
+                        <a class="nav-link menu-title {{routeActive('accounts.products.index')}} " href="{{route('accounts.products.index',[session('apiUser')['user']['account_id']])}}"><i data-feather="database"></i><span>Produits</span></a>
                     </li>
 
-                    <li class="dropdown">
-                        <a class="nav-link menu-title " href="#"><i data-feather="dollar-sign"></i><span>Taux de change</span></a>
-                    </li>
-
-                    @auth
-
-                    <li class="sidebar-main-title">
-                        <div>
-                            <h6>{{auth()->user()->getUserable()->getName() ?? 'Options'}}</h6>
-                        </div>
-                    </li>
-
-                    @if (auth()->user()->isAdmin())
-
-                    <li class="dropdown">
-                        <a class="nav-link menu-title {{routeActive('admin.dashboard')}}" href="{{route('admin.dashboard')}}"><i data-feather="pie-chart"></i><span>Tableau de bord</span></a>
-
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="nav-link menu-title {{routeGroupActive(['admin.teachers.index', 'admin.teachers.create','admin.teachers.edit','admin.teachers.dispatchings'])}}"
-                            href="{{route('admin.teachers.index')}}"><i data-feather="user"></i><span>Formateurs</span></a>
-
-                    </li>
-
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a class="nav-link menu-title {{routeGroupActive(['admin.students.index', 'admin.students.create','admin.students.edit'])}}"
                             href="{{route('admin.students.index')}}"><i data-feather="user"></i><span>Etudiants</span></a>
 
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="nav-link menu-title {{routeGroupActive(['admin.courses.index', 'admin.courses.create','admin.courses.edit'])}}"
-                            href="{{route('admin.courses.index')}}"><i data-feather="book"></i><span>Cours</span></a>
-                    </li>
+                    </li> --}}
 
                     @endif
 
 
 
-                    @if (auth()->user()->isTeacher())
 
-                    <li class="dropdown">
-                        <a class="nav-link menu-title {{routeActive('teacher.dashboard')}}" href="{{route('teacher.dashboard')}}"><i data-feather="pie-chart"></i><span>Tableau de bord</span></a>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="nav-link menu-title {{routeGroupActive(['teacher.myDispatchings', 'teacher.courseDispatchings.activities.show','teacher.courseDispatchings.activities.index'])}}"
-                             href="{{route('teacher.myDispatchings')}}"><i data-feather="corner-up-right"></i><span>Mes affectations</span></a>
-                    </li>
-
-                    @endif
-                    @endauth
+                    {{-- <li class="sidebar-main-title">
+                        <div>
+                            <h6>{{auth()->user()->getUserable()->getName() ?? 'Options'}}</h6>
+                        </div>
+                    </li> --}}
 
 
                 </ul>

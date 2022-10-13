@@ -19,6 +19,11 @@ class ProductController extends Controller
         return Product::all();
     }
 
+    public function getProductByAccount($id)
+    {
+        return Product::where('account_id', $id)->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,6 +38,7 @@ class ProductController extends Controller
             'model' => 'string',
             "brand" => "string",
             "other_description" => "string",
+            "account_id" => 'required|numeric',
         ]);
 
         $product = Product::create($request->all());

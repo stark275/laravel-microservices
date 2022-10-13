@@ -23,6 +23,9 @@ Route::put('/products/{id}', [ProductController::class, 'update']); // ok
 Route::get('/products/{product}/prices', [PriceController::class, 'index']); // ok
 Route::post('/products/{product}/prices', [PriceController::class, 'store']); // ok
 
+Route::get('/products/accounts/{id}', [ProductController::class, 'getProductByAccount']); // ok
+
+
 
 Route::get('/test', function (Request $request) {
     return collect([

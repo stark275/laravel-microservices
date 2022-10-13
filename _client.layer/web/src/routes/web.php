@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Operation\OperationController;
 use App\Http\Controllers\Operation\SellController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\AdminController;
 use App\Http\Controllers\User\AuthController;
@@ -38,6 +39,13 @@ Route::post('/admin/shops', [ShopController::class, 'store'])->name('admin.shops
 
 Route::get('/admin/shops/{id}/operations', [OperationController::class, 'index'])->name('operations.index');
 Route::get('/admin/shops/{id}/operations/sells', [SellController::class, 'index'])->name('operations.sells.index');
+
+Route::get('/admin/accounts/{id}/products', [ProductController::class, 'index'])->name('accounts.products.index');
+Route::get('/admin/accounts/{id}/products/create', [ProductController::class, 'create'])->name('accounts.products.create');
+Route::post('/admin/accounts/{id}/products/store', [ProductController::class, 'store'])->name('accounts.products.store');
+
+
+
 
 
 Route::get('/test', function (Request $request) {
