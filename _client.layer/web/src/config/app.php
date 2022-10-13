@@ -214,7 +214,7 @@ return [
 
     'services' => [
         'account' => 'http://127.0.0.1:8000/account',
-        'operation' => 'http://127.0.0.1:8000/operations',
+        'operation' => 'http://127.0.0.1:8000/op',
         'product' => 'http://127.0.0.1:8000/products',
     ]
 

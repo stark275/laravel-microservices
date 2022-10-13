@@ -1,7 +1,8 @@
+
 @extends('layouts.admin.master')
 
 @section('title')
-   Opérations
+{{$shop['name']}}
 @endsection
 
 @push('css')
@@ -18,9 +19,9 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Sessions</h3>
+			<h3>{{$shop['name']}}</h3>
 		@endslot
-		<li class="breadcrumb-item">Opérations</li>
+		<li class="breadcrumb-item">liste</li>
 
 	@endcomponent
 
@@ -33,49 +34,41 @@
 	                <div class="card-body">
 
 	                    <div class="table-responsive">
-                            <a  href="#" class="btn btn-success mb-2 float-end">
+                            <a  href="{{route('admin.shops.create')}}" class="btn btn-success mb-2 float-end">
                                 <i class="size-15" data-feather="plus-circle"></i>
-                                Facturer
+                                Nouvelle session de travail
                               </a>
 	                        <table class="display" id="basic-1">
 	                            <thead>
 	                                <tr>
 	                                    <th>No.</th>
 	                                    <th>Date</th>
-	                                    <th>type</th>
-	                                    <th>Produit</th>
-	                                    <th>Prix (Fc)</th>
-	                                    <th>Taux 1$ / Fc </th>
+	                                    <th>Status</th>
+	                                    <th>Recette</th>
+
 	                                    <th>Action</th>
 
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                             @forelse ($operations as $operation)
+	                             @forelse ($sessions as $session)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{$operation['created_at']}}</td>
-                                        <td>
-                                            @if ($operation['type'] == 'sell')
-                                                Vente
-                                            @elseif($operation['type'] == 'refueling')
-                                                Ravitaillement
-                                            @endif
-                                        </td>
-                                        <td>
-                                            {{$operation['price']['product']['name']}}
-                                        </td>
-                                        <td>{{$operation['price']['amount']}} </td>
-                                        <td>2100</td>
-                                        <td>
-                                            <a href="#" class="btn btn-warning">
-                                                <i class="size-15" data-feather="edit"></i>
-                                                Modifier
+                                        <td>{{$session['created_at']}}</td>
+                                        <td>{{$session['status']}}</td>
+                                        <td>100 240 Fc</td>
+
+                                        <td style="text-align: center">
+
+                                            <a href="{{route('sessions.operations.index',[($session['id'])])}}" class="btn btn-primary">
+                                                <i class="size-15" data-feather="layers"></i>
+                                                Opérations
                                             </a>
+
                                         </td>
                                     </tr>
                                  @empty
-                                     <div class="alert alert-info">Aucune facturation pour l'instant!</div>
+                                     <div class="alert alert-info">Aucune Session pour l'instant!</div>
                                  @endforelse
 
 

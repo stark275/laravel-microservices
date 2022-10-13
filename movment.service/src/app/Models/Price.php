@@ -16,6 +16,8 @@ class Price extends Model
         'currency'
     ];
 
+    protected $with = ['product'];
+
     public function operations()
     {
         $this->hasMany(Operation::class);

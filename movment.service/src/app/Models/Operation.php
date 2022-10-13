@@ -19,6 +19,10 @@ class Operation extends Model
         'other_price'
     ];
 
+    // protected $cast = [
+    //     'created_at' => 'datetime'
+    // ];
+
     public function session()
     {
         return $this->belongsTo(Session::class);
@@ -27,5 +31,10 @@ class Operation extends Model
     public function price()
     {
         return $this->belongsTo(Price::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

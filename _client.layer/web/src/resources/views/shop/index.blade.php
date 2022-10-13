@@ -60,10 +60,16 @@
                                                 <i class="size-15" data-feather="info"></i>
                                                 Détails
                                             </a>
-                                            <a href="{{route('operations.index',[($shop['id'])])}}" class="btn btn-primary">
+                                            {{-- <a href="{{route('operations.index',[($shop['id'])])}}" class="btn btn-primary">
                                                 <i class="size-15" data-feather="layers"></i>
                                                 Opérations
+                                            </a> --}}
+
+                                            <a href="{{route('shops.sessions.index',[($shop['id'])])}}" class="btn btn-primary">
+                                                <i class="size-15" data-feather="layers"></i>
+                                                Sessions
                                             </a>
+
                                         </td>
                                     </tr>
                                  @empty

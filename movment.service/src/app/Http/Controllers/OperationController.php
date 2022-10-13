@@ -10,7 +10,7 @@ class OperationController extends Controller
 {
     public function index(Session $session)
     {
-        return $session->getOperations();
+        return $session->operations()->with('price')->orderBy('created_at','desc')->get();
     }
 
     public function store(Request $request,Session $session)
