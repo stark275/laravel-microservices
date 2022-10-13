@@ -24,8 +24,16 @@ class ShopController extends Controller
     {
         $shop = Http::get(config('app.services.account')."/shops/$id");
 
+        $agents =  Http::get(config('app.services.account')."/shops/$id/agents");
+
+        $accountAgents =  Http::get(config('app.services.account')."/accounts/1/agents");
+
+        // dd($accountAgents->json());
+
         return view('shop.show',[
-            'shop' => $shop->json()
+            'shop' => $shop->json(),
+            'agents' => $agents->json(),
+            'accountAgents' => $accountAgents->json()
         ]);
     }
 
@@ -65,8 +73,22 @@ class ShopController extends Controller
             'account_id' => 1
         ]);
 
-        dd($shop->json());
+        // dd($shop->json());
 
         return redirect()->route('admin.shops.index');
     }
+
+    public function attach(Request $request, $id)
+    {
+        // dd($request->user_id);
+
+        $shop = Http::post(config('app.services.account')."shops/{$id}/agent",[
+            'user_id' => $request->user_id
+        ]);
+
+
+        return redirect()->route('admin.shops.show',[$id]);
+    }
+
+
 }

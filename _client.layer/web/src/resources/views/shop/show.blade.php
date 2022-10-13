@@ -60,33 +60,26 @@
                     <div class="card-body">
                     <h3><strong>Affectation</strong> </h3><br>
 
-                        <form class="theme-form" method="POST" action="">
+                        <form class="theme-form" method="POST" action="{{route('admin.shops.agents.attach',[$shop['id']])}}">
                             @csrf
                             <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Culte</label>
+                                <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Agent</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select input-air-primary digits" id="exampleFormControlSelect17">
-                                        <option>Premier culte</option>
-                                        <option>Deuxième culte</option>
-                                        <option>Troisième culte</option>
+                                    <select  class="form-select input-air-primary digits" id="exampleFormControlSelect17" name="user_id">
+                                        <option selected > -----</option>
 
-                                      </select>
-                                </div>
-                            </div>
+                                        @forelse ($accountAgents as $agent)
+                                            <option value="{{$agent['id']}}">{{$agent['firstname'].' '.$agent['name']}}</option>
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Classe</label>
-                                <div class="col-sm-9">
-                                    <select class="form-select input-air-primary digits" id="exampleFormControlSelect17">
-                                        <option>Niveau 1</option>
-                                        <option>Niveau 2</option>
-                                        <option>Niveau 3</option>
-                                        <option>Niveau 4</option>
-                                        <option>Niveau 5</option>
+                                        @empty
+                                            <option >Aucun</option>
+
+                                        @endforelse
 
                                     </select>
                                 </div>
                             </div>
+
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Actualiser</button>
@@ -99,12 +92,53 @@
                 </div>
 
 			</div>
+
+            <div class="col-sm-12">
+	            <div class="card">
+
+	                <div class="card-body">
+
+	                    <div class="table-responsive">
+
+	                        <table class="display" id="basic-1">
+	                            <thead>
+	                                <tr>
+	                                    <th>No.</th>
+	                                    <th>Prénom</th>
+                                        <th>Nom</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                             @forelse ($agents as $agent)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{$agent['firstname']}}</td>
+                                        <td>{{$agent['name']}}</td>
+
+
+                                    </tr>
+                                 @empty
+                                     <div class="alert alert-info">Aucune Boutique pour l'instant!</div>
+                                 @endforelse
+
+
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 		</div>
 	</div>
 
 	@push('scripts')
 	<script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
+
+    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+
+
 	@endpush
 
 @endsection

@@ -29,6 +29,7 @@ class ShopUpdated implements ShouldQueue
      */
     public function handle()
     {
+
         $shop = Shop::where('id',$this->data['id'])->update([
             'id' => $this->data['id'],
             'name' => $this->data['name'],

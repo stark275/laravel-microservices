@@ -37,9 +37,13 @@ class ShopController extends Controller
             'type' => 'string'
         ]);
 
-        ShopUpdated::dispatch($shop->refresh()->toArray());
+        $shop->update($request->all());
 
-        return $shop->update($request->all());
+        $shop = Shop::find($shop->id);
+
+        ShopUpdated::dispatch($shop->toArray());
+
+        return $shop;
     }
 
     public function show(Shop $shop)
@@ -58,5 +62,10 @@ class ShopController extends Controller
         ]);
 
         return $user;
+    }
+
+    public function getAgent(Shop $shop)
+    {
+        return $shop->getUsers();
     }
 }

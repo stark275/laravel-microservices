@@ -32,10 +32,9 @@ Route::get('/admin/shops', [ShopController::class, 'index'])->name('admin.shops.
 Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admin.shops.create');
 Route::get('/admin/shops/show/{id}', [ShopController::class, 'show'])->name('admin.shops.show');
 Route::post('/admin/shops/show/{id}', [ShopController::class, 'update'])->name('admin.shops.update');
-
+Route::post('/admin/shops/show/{id}/agents/attach', [ShopController::class, 'attach'])->name('admin.shops.agents.attach');
 
 Route::post('/admin/shops', [ShopController::class, 'store'])->name('admin.shops.store');
-
 
 Route::get('/admin/shops/{id}/operations', [OperationController::class, 'index'])->name('operations.index');
 Route::get('/admin/shops/{id}/operations/sells', [SellController::class, 'index'])->name('operations.sells.index');

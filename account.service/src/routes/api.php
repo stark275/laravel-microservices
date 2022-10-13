@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
@@ -27,6 +28,11 @@ Route::post('/shops', [ShopController::class, 'store'])->name('shops.store');
 Route::put('/shops/{shop}', [ShopController::class, 'update'])->name('shops.update');
 Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
 Route::post('/shops/{shop}/agent', [ShopController::class, 'attach'])->name('shops.agent.attach');
+Route::get('/shops/{shop}/agents', [ShopController::class, 'getAgent'])->name('shops.agent.get');
+
+Route::get('/accounts/{account}/agents', [AccountController::class, 'getAgentByAccount'])->name('accounts.agents.index');
+
+
 
 
 Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
