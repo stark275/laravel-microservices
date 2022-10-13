@@ -26,7 +26,7 @@
                         <form class="theme-form" method="POST" action="{{route('accounts.products.store',[$accountId])}}">
                             @csrf
                             <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Agent</label>
+                                <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Produit</label>
                                 <div class="col-sm-9">
                                     <select  class="form-select input-air-primary digits" id="exampleFormControlSelect17" name="type">
                                         <option selected > -----</option>
