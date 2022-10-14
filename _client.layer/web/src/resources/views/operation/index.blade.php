@@ -38,7 +38,7 @@
                                 Facturer
                               </a> --}}
 
-                              <button class="btn btn-primary mb-2 float-end" type="button" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal">Operation</button>
+                              <button class="btn btn-primary mb-2 float-end" type="button" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal">Nouvelle Opération</button>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -47,13 +47,13 @@
                                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="theme-form" method="POST" action="#">
+                                        <form class="theme-form" method="POST" action="{{route('sessions.operations.store',[$sessionId])}}">
                                             @csrf
                                             <div class="mb-3 row">
                                                 <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Type</label>
                                                 <div class="col-sm-9">
                                                     <select  class="form-select input-air-primary digits" id="exampleFormControlSelect17" name="type">
-                                                            <option value="sell" >Vente</option>
+                                                            <option value="sell" selected >Vente</option>
                                                             <option value="refueling" >Ravitaillement</option>
 
                                                     </select>
@@ -63,10 +63,25 @@
                                             <div class="mb-3 row">
                                                 <label class="col-sm-3 col-form-label" for="exampleFormControlSelect17">Produit</label>
                                                 <div class="col-sm-9">
-                                                    <select  class="form-select input-air-primary digits" id="exampleFormControlSelect17" name="type">
+                                                    <select  class="form-select input-air-primary digits" id="exampleFormControlSelect17" name="price">
+
                                                             @forelse ($products as $prod)
-                                                                <option value="sell" >
-                                                                    {{$prod['name']}}</option>
+                                                                @php
+                                                                    $priceId = null;
+                                                                @endphp
+                                                                @forelse ($prod['prices'] as $price)
+                                                                    @if ($price['current'] == 1)
+                                                                        @php
+                                                                             $priceId = $price['id'];
+                                                                        @endphp
+                                                                    @endif
+                                                                @empty
+
+                                                                @endforelse
+
+                                                                <option value="{{$priceId}}" >
+                                                                    {{$prod['name'].' '.$prod['model']}}
+                                                                </option>
                                                             @empty
                                                                 <option >Aucun</option>
 
@@ -107,8 +122,9 @@
 	                                    <th>type</th>
 	                                    <th>Produit</th>
 	                                    <th>Prix (Fc)</th>
+	                                    <th>Quatité</th>
+	                                    <th>Total (Fr)</th>
 	                                    <th>Taux 1$ / Fc </th>
-	                                    <th>Action</th>
 
 	                                </tr>
 	                            </thead>
@@ -125,18 +141,29 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{$operation['price']['product']['name']}}
+                                                {{$operation['price']['product']['name']}}
                                         </td>
-                                        <td>{{$operation['price']['amount']}} </td>
-                                        <td>2100</td>
                                         <td>
+                                                {{$operation['price']['amount'] }}
+                                        </td>
+                                        <td>
+                                                 {{$operation['quantity'] }}
+                                        </td>
+
+                                        <td style="background-color: lightskyblue">
+                                            {{$operation['price']['amount'] * $operation['quantity']}}
+                                        </td>
+
+                                        <td>2000</td>
+                                        {{-- <td>
                                             <a href="#" class="btn btn-warning">
                                                 <i class="size-15" data-feather="edit"></i>
                                                 Modifier
                                             </a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                  @empty
+                                 <br><br>
                                      <div class="alert alert-info">Aucune facturation pour l'instant!</div>
                                  @endforelse
 

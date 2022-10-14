@@ -69,6 +69,7 @@
                                         </td>
                                     </tr>
                                  @empty
+                                 <br><br>
                                      <div class="alert alert-info">Aucune Produit pour l'instant!</div>
                                  @endforelse
 

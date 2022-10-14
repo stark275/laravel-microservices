@@ -22,18 +22,18 @@ class SessionController extends Controller
             'agent_id' => 'required|numeric'
         ]);
 
-        if ($this->closeLastOpenSession($shop)) {
+        // if ($this->closeLastOpenSession($shop)) {
             $session = $shop->sessions()->create([
                 'status' => $data['status'],
                 'agent_id' => $data['agent_id']
             ]);
 
             return $session;
-        }
+        // }
 
-        return [
-            'error' => 'Last work session not closed'
-        ];
+        // return [
+        //     'error' => 'Last work session not closed'
+        // ];
     }
 
     public function close(Shop $shop)

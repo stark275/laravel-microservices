@@ -35,10 +35,12 @@ Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admi
 Route::get('/admin/shops/show/{id}', [ShopController::class, 'show'])->name('admin.shops.show');
 Route::post('/admin/shops/show/{id}', [ShopController::class, 'update'])->name('admin.shops.update');
 Route::post('/admin/shops/show/{id}/agents/attach', [ShopController::class, 'attach'])->name('admin.shops.agents.attach');
-
 Route::post('/admin/shops', [ShopController::class, 'store'])->name('admin.shops.store');
 
+
 Route::get('/admin/sessions/{id}/operations', [OperationController::class, 'index'])->name('sessions.operations.index');
+Route::post('/admin/sessions/{id}/operations', [OperationController::class, 'store'])->name('sessions.operations.store');
+
 Route::get('/admin/sessions/{id}/operations/sells', [SellController::class, 'index'])->name('operations.sells.index');
 
 Route::get('/admin/accounts/{id}/products', [ProductController::class, 'index'])->name('accounts.products.index');
@@ -46,6 +48,8 @@ Route::get('/admin/accounts/{id}/products/create', [ProductController::class, 'c
 Route::post('/admin/accounts/{id}/products/store', [ProductController::class, 'store'])->name('accounts.products.store');
 
 Route::get('/admin/shops/{id}/sessions', [SessionController::class, 'index'])->name('shops.sessions.index');
+Route::post('/admin/shops/{id}/sessions', [SessionController::class, 'store'])->name('shops.session.store');
+
 
 
 

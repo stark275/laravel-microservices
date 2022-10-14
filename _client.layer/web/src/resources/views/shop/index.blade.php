@@ -73,6 +73,7 @@
                                         </td>
                                     </tr>
                                  @empty
+                                 <br><br>
                                      <div class="alert alert-info">Aucune Boutique pour l'instant!</div>
                                  @endforelse
 

@@ -32,8 +32,8 @@ class ShopController extends Controller
 
         return view('shop.show',[
             'shop' => $shop->json(),
-            'agents' => $agents->json(),
-            'accountAgents' => $accountAgents->json()
+            'agents' => ($agents->json() ?? []),
+            'accountAgents' => ($accountAgents->json() ?? [])
         ]);
     }
 

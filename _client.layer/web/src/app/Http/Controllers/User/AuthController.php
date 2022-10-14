@@ -34,7 +34,7 @@ class AuthController extends Controller
         //  session(['apiUser', ]);
         // dd(Session::get('apiUser'));
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.shops.index');
 
         // if (true) {
         //     session(['apiUser', $response->body()]);

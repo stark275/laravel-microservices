@@ -34,17 +34,43 @@
 	                <div class="card-body">
 
 	                    <div class="table-responsive">
-                            <a  href="{{route('admin.shops.create')}}" class="btn btn-success mb-2 float-end">
+                            {{-- <a  href="{{route('admin.shops.create')}}" class="btn btn-success mb-2 float-end">
                                 <i class="size-15" data-feather="plus-circle"></i>
                                 Nouvelle session de travail
-                              </a>
+                              </a> --}}
+                              <form class="theme-form" method="POST" action="{{route('shops.session.store',[$shop['id']])}}">
+                                @csrf
+
+
+
+                                <div class="mb-3 row">
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="status" id="url" type="hidden" value="open" />
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="agent_id" id="url" type="hidden" value="{{session('apiUser')['user']['id']}}" />
+                                    </div>
+                                </div>
+
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success mb-2 float-end">
+                                        <i class="size-15" data-feather="plus-circle"></i>
+                                          Nouvelle session de travail
+                                    </button>
+                                </div>
+
+                            </form>
 	                        <table class="display" id="basic-1">
 	                            <thead>
 	                                <tr>
 	                                    <th>No.</th>
 	                                    <th>Date</th>
 	                                    <th>Status</th>
-	                                    <th>Recette</th>
+	                                    {{-- <th>Recette</th> --}}
 
 	                                    <th>Action</th>
 
@@ -56,7 +82,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{$session['created_at']}}</td>
                                         <td>{{$session['status']}}</td>
-                                        <td>100 240 Fc</td>
+                                        {{-- <td>100 240 Fc</td> --}}
 
                                         <td style="text-align: center">
 
@@ -68,6 +94,7 @@
                                         </td>
                                     </tr>
                                  @empty
+                                        <br><br>
                                      <div class="alert alert-info">Aucune Session pour l'instant!</div>
                                  @endforelse
 

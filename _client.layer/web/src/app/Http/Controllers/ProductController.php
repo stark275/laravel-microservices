@@ -12,7 +12,7 @@ class ProductController extends Controller
         $products =  Http::get(config('app.services.product').'/products/accounts/'.session('apiUser')['user']['account_id']);
 
         return view('product.index',[
-            'products' => $products->json(),
+            'products' => ($products->json() ?? []),
             'accountId' => $id
         ]);
     }

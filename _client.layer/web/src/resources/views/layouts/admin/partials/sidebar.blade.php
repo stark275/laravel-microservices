@@ -12,9 +12,9 @@
 
                     @if (isset(session('apiUser')['user']))
 
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a class="nav-link menu-title {{routeActive('admin.dashboard')}}" href="{{route('admin.dashboard')}}"><i data-feather="pie-chart"></i><span>Tableau de bord</span></a>
-                    </li>
+                    </li> --}}
 
                     <li class="dropdown">
                         <a class="nav-link menu-title {{routeActive('admin.shops.index')}}" href="{{route('admin.shops.index')}}"><i data-feather="shopping-cart"></i><span>Boutiques</span></a>
